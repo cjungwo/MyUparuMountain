@@ -55,10 +55,11 @@ public class Farms {
     }
     private Farm selectFarm() {
         Farm result = null;
-        int selection = In.readInt("Which one do you like?") - 1;
+        int selection = In.readInt("Select farm to harvest?") - 1;
         if (selection < farmList.size() && selection >= 0) {
             result = farmList.get(selection);
             System.out.println("Your choice is " + result.getFruitName() + " farm.");
+            System.out.println("It takes " + result.getProducingTime() + "seconds");
         }
         return result;
     }

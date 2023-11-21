@@ -90,7 +90,7 @@ public class Habitat {
         return result;
     } 
     private void showMoneyOutput(double producedMoney, Inventory inventory) {
-        System.out.println("Do you harvest? (Y/N)");
+        System.out.println("Do you harvest? It takes 5sec. (Y/N)");
         char answer = In.nextUpperChar();
         if (answer == 'Y') {
             try {

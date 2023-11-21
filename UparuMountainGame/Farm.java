@@ -19,6 +19,9 @@ public class Farm {
     public String getFruitName() {
         return fruitName;
     }
+    public int getProducingTime() {
+        return producingTime;
+    }
     public int getPrice() {
         return price;
     }

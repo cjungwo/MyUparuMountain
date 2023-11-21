@@ -127,6 +127,8 @@ public class Shop {
                         uparus.setUparu(uparu);
                         result += "Successful Purchase!!!";
                         result += "\nNow you have " + inventory.getMoney() + ".";
+                    } else {
+                        result += uparu.getProperty() + " habitat is already full.";
                     }
                 } else {
                     result += "You don't have " + uparu.getProperty() + " habitat.";

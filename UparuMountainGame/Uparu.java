@@ -54,20 +54,29 @@ public class Uparu {
     }
 
     public void eatFruit(Inventory inventory) {
-        System.out.println("You have " + inventory.getFruit() + "fruits.");
-        int fruitsToUse = In.readInt("How many fruits would you feed this Uparu?");
+        System.out.println("This " + name + " need to "
+                + (fruitsPerLevels.getFirst() - eatenFruitNum)
+                + "fruits for level up");
+        int fruitsToUse = In.readInt("How many fruits would you feed this Uparu? \nTotal "
+                + inventory.getFruit() + "fruits");
         if (inventory.consumeFruit(fruitsToUse)) {
             eatenFruitNum += fruitsToUse;
             System.out.println(name + " ate " + fruitsToUse + "fruits.");
         }
-        if (fruitsPerLevels.getFirst() == eatenFruitNum) {
-            levelUp();
-            fruitsPerLevels.removeFirst();
-        }
+        levelUp();
     }
     private void levelUp() {
-        level++;
-        System.out.println("Level up!!");
+        boolean stop = false;
+        do {
+            if (fruitsPerLevels.getFirst() <= eatenFruitNum) {
+                level++;
+                System.out.println("Level up!!");
+                System.out.println("Now this " + name + " is Level" + level);
+                fruitsPerLevels.removeFirst();
+            } else {
+                stop = true;
+            }
+        } while (!stop);
     }
 
     public String toString() {
