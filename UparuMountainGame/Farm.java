@@ -2,28 +2,29 @@ package UparuMountainGame;
 
 import java.util.concurrent.TimeUnit;
 
-public class Farm {
-    private String fruitName;
+public class Farm extends Record{
     private int producingTime;
     private int producingAmount;
     private int price;
 
-    public Farm(String fruitName, int producingTime, int producingAmount, int price) {
-        this.fruitName = fruitName;
+    public Farm(int id, String name, int producingTime, int producingAmount, int price) {
+        super(id, name);
         this.producingTime = producingTime;
         this.producingAmount = producingAmount;
         this.price = price;
     }
 
     //Getter
-    public String getFruitName() {
-        return fruitName;
-    }
     public int getProducingTime() {
         return producingTime;
     }
     public int getPrice() {
         return price;
+    }
+
+    // Setter
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void harvestFruit(Inventory inventory) {
@@ -38,7 +39,7 @@ public class Farm {
     
     public String toString() {
         return "-------------------------" +
-        "\nFruit Name: " + fruitName +
+        "\nFruit Name: " + name +
         "\nProduce Time: " + producingTime + "sec" +
         "\nProducing Amount: " + producingAmount +
         "\nPrice: " + price +

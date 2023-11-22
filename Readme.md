@@ -26,3 +26,10 @@
 [O] if purchase, add uparu in uparuList
 
 every time unit change second.
+
+
+2023/11/22
+
+[O] Add record and records
+[] Add Iterator for inner list
+[] sync uparus of user and uparusInHabitat of habitat

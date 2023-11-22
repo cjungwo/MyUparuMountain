@@ -1,42 +1,22 @@
 package UparuMountainGame;
 
-import java.util.LinkedList;
-
-public class Habitats {
-    private static Habitats habitats;
-    LinkedList<Habitat> habitatList;
-
-    public Habitats() {
-        habitatList = new LinkedList<Habitat>();
-    }
-
-    public static Habitats getHabitats() {
-        if (habitats == null) {
-            synchronized (Habitats.class) {
-                habitats = new Habitats();
-            }
-        }
-        return habitats;
-    }
+public class Habitats extends Records{
+    
+    public Habitats() {}
 
     public int getSize() {
-        return habitatList.size();
+        return records.size();
     }
 
-    public void setHabitat(Habitat habitat) {
-        habitatList.add(habitat);
-    }
-
-    public void menu() {
-        showHabitats();
-        if (habitatList.size() != 0) {
+    public void menu(User user) {
+        if (records.size() != 0) {
             int action = readAction();
             switch (action) {
                 case 1:
-                    harvest();
+                    user.harvestMoney();
                     break;
                 case 2:
-                    show();
+                    showSelectedHabitat(user);
                     break;
                 case 3:
                     System.out.println("Go back to main menu.");
@@ -52,39 +32,70 @@ public class Habitats {
                 "Please Enter your choice (1. Harvest Money 2. Show uparu in habitat 3. Exit)");
     }
 
-    public void showHabitats() {
-        System.out.println(In.showList("Habitat", habitatList));
+    public void add(Habitat habitat) {
+        int previousId = habitat.getId();
+        habitat.setId(++id);
+        records.add(habitat);
+        habitat.setId(previousId);
     }
 
-    private void harvest() {
-        Habitat selectHabitat = selectHabitat();
-        if (selectHabitat != null) {
-            selectHabitat.harvestMoney(Inventory.getInventory());
+    public void add(String name, Property property, int moneyCapacity, int uparuCapacity, int price) {
+        Habitat habitat = new Habitat(++id, name, property, moneyCapacity, uparuCapacity, price);
+        records.add(habitat);
+    }
+
+    public Habitat find(int id) {
+        return (Habitat) super.find(id);
+    }
+
+    public Habitat find(Property property) {
+        for (Record habitat : records) {
+            if (((Habitat)habitat).getProperty().equals(property)) {
+                return (Habitat)habitat;
+            }
+        }
+        return null;
+    }
+
+    public Habitat selectHabitat() {
+        Habitat result = null;
+        int selection = In.readInt("Select number of habitat");
+        result = find(selection);
+        if (result != null) {
+            System.out.println("Your choice is " + result.name + ".");
         } else {
             System.out.println("You select wrong number of habitat.");
-        }
-    }
-    private Habitat selectHabitat() {
-        Habitat result = null;
-        int selection = In.readInt("Select number of habitat") - 1;
-        if (selection < habitatList.size() && selection >= 0) {
-            result = habitatList.get(selection);
-            System.out.println("Your choice is " + result.getHabitatName() + ".");
         }
         return result;
     }
 
-    private void show() {
+    private void showSelectedHabitat(User user) {
         Habitat selectHabitat = selectHabitat();
         if (selectHabitat != null) {
             System.out.println(selectHabitat.showUparusInHabitat());
-            System.out.println("Do you want to feed your uparu? (Y/N)");
-            char choice = In.nextUpperChar();
-            if (choice == 'Y') {
-                selectHabitat.feedUparu(Inventory.getInventory());
+            if (!selectHabitat.checkEmpty()) {
+                user.feedInHabitat(selectHabitat);
             }
-        } else {
-            System.out.println("You select wrong number of habitat.");
         }
+    }
+
+    public void show() {
+        System.out.println(toString());
+    }
+
+    public String toString() {
+        String result = "";
+        result += "     All Habitat List";
+        result += "\n--------------------------";
+        if (records.size() == 0) {
+            result += "\nNothing in here";
+        } else {
+            for (Record record : records) {
+                result += "\n" + record.id + ". " + record.name;
+                result += "\n" + ((Habitat) record).toString();
+            }
+        }
+        result += "\n--------------------------";
+        return result;
     }
 }

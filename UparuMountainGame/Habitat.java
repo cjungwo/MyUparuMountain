@@ -1,89 +1,84 @@
 package UparuMountainGame;
 
-import java.util.LinkedList;
 import java.util.concurrent.TimeUnit;
 
-public class Habitat {
+public class Habitat extends Record{
     private Property property;
     private int moneyCapacity;
     private int uparuCapacity;
     private int price;
-    private LinkedList<Uparu> uparusInHabitat = new LinkedList<Uparu>();
+    private Uparus uparusInHabitat = new Uparus();
 
-    public Habitat(Property property, int moneyCapacity, int uparuCapacity, int price) {
+    public Habitat(int id, String name, Property property, int moneyCapacity, int uparuCapacity, int price) {
+        super(id, name);
         this.property = property;
         this.moneyCapacity = moneyCapacity;
         this.uparuCapacity = uparuCapacity;
         this.price = price;
     }
+    
 
     // Getter
-    public String getHabitatName() {
-        return property + " habitat";
-    }
-
-     public Property getProperty() {
+    public Property getProperty() {
         return property;
     }
 
     public int getPrice() {
         return price;
     }
-
-    public String showUparusInHabitat() {
-        return In.showList("Uparu", uparusInHabitat);
+    public Uparus getUparusInHabitat() {
+        return uparusInHabitat;
     }
 
 
-    public void addUparu(Uparu uparu) {
-        // 리스트에 우파루 추가
-        uparusInHabitat.add(uparu);
+    // Setter
+    public void setId(int id) {
+        this.id = id;
     }
+
+
+    public void addUparu(String name, Property property, int moneyPerSecond, int price) {
+        uparusInHabitat.add(name, property, moneyPerSecond, price);
+    }
+
     public boolean checkHabitatSize() {
         boolean result = false;
-        if (uparusInHabitat.size() < uparuCapacity) {
+        if (uparusInHabitat.getRecords().size() < uparuCapacity) {
             result = true;
         }
         return result;
     }
 
-    public void feedUparu(Inventory inventory) {
-        Uparu selectedUparu = selectUparu();
-        if (selectedUparu != null) {
-            selectedUparu.eatFruit(inventory);
-        } else {
-            System.out.println("You do not select any uparu");
-        }
-    }
-    private Uparu selectUparu() {
-        Uparu result = null;
-        int selection = In.readInt("Select number of uparu for feeding") - 1;
-        if (selection < uparusInHabitat.size() && selection >= 0) {
-            result = uparusInHabitat.get(selection);
-            System.out.println("Your choice is " + result.getName() + ".");
-        }
-        return result;
-    }
-
-    private double totalMoneyOutput() {
-        double totalMoneyPerSecond = 0;
-        for(Uparu uparu : uparusInHabitat) {
-            totalMoneyPerSecond += uparu.getMoneyPerSecond();
+    private int totalMoneyOutput() {
+        int totalMoneyPerSecond = 0;
+        for(Record uparu : uparusInHabitat.getRecords()) {
+            totalMoneyPerSecond += ((Uparu)uparu).getMoneyPerSecond();
         }
         return totalMoneyPerSecond;
     }
 
     public void harvestMoney(Inventory inventory) {
-        double producedMoney = calculateProducedMoney();
+        if(!checkEmpty()) {
+            int producedMoney = calculateProducedMoney();
 
-        System.out.println("The accumulated money so far is " + producedMoney);
-        showMoneyOutput(producedMoney, inventory);
-    }
-    private double calculateProducedMoney() {
-        double result = 0;
-        for (Uparu uparu : uparusInHabitat) {
-            result += uparu.getMoneyPerSecond();
+            System.out.println("The accumulated money so far is " + producedMoney);
+            showMoneyOutput(producedMoney, inventory);
         }
+    }
+
+    public boolean checkEmpty() {
+        boolean result;
+        if (uparusInHabitat.getRecords().size() == 0) {
+            result = true;
+            System.out.println("There is any uparu.");
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    private int calculateProducedMoney() {
+        int result = totalMoneyOutput();
         if (result > moneyCapacity) {
             result = moneyCapacity;
         }
@@ -112,5 +107,9 @@ public class Habitat {
          "\nUparus In here: \n" + showUparusInHabitat() +
          "\nTotal Harvest money: " + totalMoneyOutput() + "/5sec" +
          "\n---------------------------";
+    }
+    
+    public String showUparusInHabitat() {
+        return uparusInHabitat.toString();
     }
 }

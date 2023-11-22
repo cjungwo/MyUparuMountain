@@ -1,35 +1,13 @@
 package UparuMountainGame;
+public class Farms extends Records{
+    public Farms() {}
 
-import java.util.LinkedList;
-
-public class Farms {
-    private static Farms farms;
-    private LinkedList<Farm> farmList;
-
-    public Farms() {
-        farmList = new LinkedList<Farm>();
-    }
-
-    public static Farms getFarms() {
-        if (farms == null) {
-            synchronized (Farms.class) {
-                farms = new Farms();
-            }
-        }
-        return farms;
-    }
-
-    public void setFarm(Farm farm) {
-        farmList.add(farm);
-    }
-
-    public void menu() {
-        showFarms();
-        if (farmList.size() != 0) {
+    public void menu(User user) {
+        if (records.size() != 0) {
             int action = readAction();
             switch (action) {
                 case 1:
-                    harvest();
+                    user.harvestFruit();
                     break;
                 case 2:
                     System.out.println("Go back to main menu.");
@@ -45,26 +23,51 @@ public class Farms {
                 "Please Enter your choice (1. Harvest fruits 2. Exit)");
     }
 
-    private void harvest() {
-        Farm selectFarm = selectFarm();
-        if (selectFarm != null) {
-            selectFarm.harvestFruit(Inventory.getInventory());
-        } else {
-            System.out.println("You select wrong number of Farm.");
-        }
+    public void add(Farm farm) {
+        int previousId = farm.getId();
+        farm.setId(++id);
+        records.add(farm);
+        farm.setId(previousId);
     }
-    private Farm selectFarm() {
+    public void add(String name, int producingTime, int producingAmount, int price) {
+        Farm farm = new Farm(++id, name, producingTime,producingAmount, price);
+        records.add(farm);
+    }
+
+    public Farm find(int id) {
+        return (Farm) super.find(id);
+    }
+
+    public Farm selectFarm() {
         Farm result = null;
-        int selection = In.readInt("Select farm to harvest?") - 1;
-        if (selection < farmList.size() && selection >= 0) {
-            result = farmList.get(selection);
-            System.out.println("Your choice is " + result.getFruitName() + " farm.");
+        int selection = In.readInt("Select farm to harvest?");
+        result = find(selection);
+        if (result != null) {
+            System.out.println("Your choice is " + result.getName() + " farm.");
             System.out.println("It takes " + result.getProducingTime() + "seconds");
+        } else {
+            System.out.println("You chose wrong number.");
         }
         return result;
     }
 
-    public void showFarms() {
-        System.out.println(In.showList("Farm", farmList));
+    public void show() {
+        System.out.println(toString());
+    }
+
+    public String toString() {
+        String result = "";
+        result += "     All Farm List";
+        result += "\n--------------------------";
+        if (records.size() == 0) {
+            result += "\nNothing in here";
+        } else {
+            for (Record record : records) {
+                result += "\n" + record.id + ".";
+                result += "\n" + ((Farm) record).toString();
+            }
+        }
+        result += "\n--------------------------";
+        return result;
     }
 }

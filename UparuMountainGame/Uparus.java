@@ -1,73 +1,52 @@
 package UparuMountainGame;
 
-import java.util.LinkedList;
+public class Uparus extends Records{
+    public Uparus() {}
 
-public class Uparus {
-    private static Uparus uparus;
-    LinkedList<Uparu> uparuList;
-
-    public Uparus() {
-        uparuList = new LinkedList<Uparu>();
+    public void add(Uparu uparu) {
+        int previousId = uparu.getId();
+        uparu.setId(++id);
+        records.add(uparu);
+        uparu.setId(previousId);
+    }
+    public void add(String name, Property property, int moneyPerSecond, int price) {
+        Uparu uparu = new Uparu(++id, name, property, moneyPerSecond, price);
+        records.add(uparu);
     }
 
-    public static Uparus getUparus() {
-        if (uparus == null) {
-            synchronized (Uparus.class) {
-                uparus = new Uparus();
-            }
-        }
-        return uparus;
+    public Uparu find(int id) {
+        return (Uparu) super.find(id);
     }
 
-    public int getSize() {
-        return uparuList.size();
-    }
-
-    public void setUparu(Uparu uparu) {
-        uparuList.add(uparu);
-    }
-
-    public void menu() {
-        showUparus();
-        if (uparuList.size() != 0) {
-            int action = readAction();
-            switch (action) {
-                case 1:
-                    feed();
-                    break;
-                case 2:
-                    System.out.println("Go back to main menu.");
-                    break;
-                default:
-                    System.out.println("You chose wrong number.");
-                    break;
-            }
-        }
-    }
-    private int readAction() {
-        return In.readInt(
-                "Enter your choice (1. Feeding Uparu 2. Exit)");
-    }
-
-    private void feed() {
-        Uparu selectUparu = selectUparu();
-        if (selectUparu != null) {
-            selectUparu.eatFruit(Inventory.getInventory());
-        } else {
-            System.out.println("You select wrong number of uparu.");
-        }
-    }
-    private Uparu selectUparu() {
+    public Uparu selectUparu() {
         Uparu result = null;
-        int selection = In.readInt("Select number of uparu for feeding") - 1;
-        if (selection < uparuList.size() && selection >= 0) {
-            result = uparuList.get(selection);
+        int selection = In.readInt("Select number of uparu for feeding");
+        result = find(selection);
+        if (result != null) {
             System.out.println("Your choice is " + result.getName() + ".");
+        } else {
+            System.out.println("You chose wrong number.");
         }
         return result;
     }
 
-    public void showUparus() {
-        System.out.println(In.showList("Uparu", uparuList));
+    public void show() {
+        System.out.println(toString());
+    }
+
+    public String toString() {
+        String result = "";
+        result += "     All Uparu List";
+        result += "\n--------------------------";
+        if (records.size() == 0) {
+            result += "\nNothing in here";
+        } else {
+            for (Record record : records) {
+                result += "\n" + record.id + ".";
+                result += "\n" + ((Uparu) record).toString();
+            }
+        }
+        result += "\n--------------------------";
+        return result;
     }
 }

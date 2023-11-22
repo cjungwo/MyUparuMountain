@@ -2,19 +2,19 @@ package UparuMountainGame;
 
 import java.util.LinkedList;
 
-public class Uparu {
-    protected String name;
+public class Uparu extends Record{
     protected int level = 1;
     protected Property property;
-    protected double moneyPerSecond;
+    protected int moneyPerSecond;
     protected int price;
     protected int eatenFruitNum = 0;
 
     private LinkedList<Integer> fruitsPerLevels = new LinkedList<Integer>();
+    
 
-    public Uparu(String name, double moneyPerSecond, int price) {
-        this.name = name;
-        this.property = Property.Normal;
+    public Uparu(int id, String name, Property property, int moneyPerSecond, int price) {
+        super(id, name);
+        this.property = property;
         this.moneyPerSecond = moneyPerSecond;
         this.price = price;
         setfruitsPerLevels();
@@ -32,16 +32,13 @@ public class Uparu {
     }
 
     // Getter
-    public String getName() {
-        return name;
-    }
     public int getLevel() {
         return level;
     }
     public Property getProperty() {
         return property;
     }
-    public double getMoneyPerSecond() {
+    public int getMoneyPerSecond() {
         return moneyPerSecond;
     }
     public int getPrice() {
@@ -49,6 +46,9 @@ public class Uparu {
     }
 
     // Setter
+    public void setId(int id) {
+        this.id = id;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -64,6 +64,7 @@ public class Uparu {
             System.out.println(name + " ate " + fruitsToUse + "fruits.");
         }
         levelUp();
+        System.out.println(name + "'s total eaten fruits are " + eatenFruitNum);
     }
     private void levelUp() {
         boolean stop = false;
@@ -86,6 +87,7 @@ public class Uparu {
          "\nLevel: " + level + 
          "\nEaten Fruit Num: " + eatenFruitNum +
          "\nMoney Output: " + moneyPerSecond + "/5sec" +
-         "\nPrice: " + price;
+         "\nPrice: " + price +
+         "\n-------------------------";
     }
 }

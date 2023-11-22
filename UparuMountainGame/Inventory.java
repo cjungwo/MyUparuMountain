@@ -1,22 +1,12 @@
 package UparuMountainGame;
 
 public class Inventory {
-    private static Inventory inventory;
     int money;
     int fruit;
 
     public Inventory() {
         money = 100;
         fruit = 100;
-    }
-
-    public static Inventory getInventory() {
-        if (inventory == null) {
-            synchronized (Inventory.class) {
-                inventory = new Inventory();
-            }
-        }
-        return inventory;
     }
 
     public int getMoney() {

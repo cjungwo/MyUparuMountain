@@ -3,7 +3,6 @@ package UparuMountainGame;
 import java.text.*;
 import java.util.Scanner;
 import java.util.InputMismatchException;
-import java.util.LinkedList;
 
 public class In {   
     private static Scanner in = new Scanner(System.in); 
@@ -62,23 +61,6 @@ public class In {
         DecimalFormat formatter = 
             new DecimalFormat("###,##0.00");
         return formatter.format(amount); 
-    }
-    
-    public static <T> String showList(String title, LinkedList<T> list) {
-        String result = "";
-
-        result += "     All " + title + " List";
-        result += "\n--------------------------";
-        if (list.size() == 0) {
-            result += "\nNothing in here";
-        } else {
-            for (int i = 0; i < list.size(); i++) {
-                result += "\n" + (i + 1) + ".";
-                result += "\n" + list.get(i).toString();
-            }
-        }
-        result += "\n--------------------------";
-        return result;
     }
 }
 
