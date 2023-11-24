@@ -1,6 +1,6 @@
-package UparuMountainGame;
+package UparuMountainGUI.model;
 
-public class Record {
+public class Record extends Updater{
     protected int id;
     protected String name;
 

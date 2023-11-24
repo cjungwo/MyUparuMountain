@@ -1,4 +1,4 @@
-package UparuMountainGame;
+package UparuMountainGUI.model;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,6 +1,8 @@
-package UparuMountainGame;
+package UparuMountainGUI.model;
 
-public class User {
+import UparuMountainGUI.In;
+
+public class User extends Updater{
     private int id;
     private String name;
 
@@ -8,7 +10,7 @@ public class User {
     private Farms farms = new Farms();
     private Inventory inventory = new Inventory();
 
-    User(int id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
     }

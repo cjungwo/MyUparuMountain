@@ -1,6 +1,8 @@
-package UparuMountainGame;
+package UparuMountainGUI.model;
 
 import java.util.concurrent.TimeUnit;
+
+import UparuMountainGUI.In;
 
 public class Habitat extends Record{
     private Property property;

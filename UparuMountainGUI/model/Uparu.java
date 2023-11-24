@@ -1,6 +1,8 @@
-package UparuMountainGame;
+package UparuMountainGUI.model;
 
 import java.util.LinkedList;
+
+import UparuMountainGUI.In;
 
 public class Uparu extends Record{
     protected int level = 1;
