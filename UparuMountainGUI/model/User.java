@@ -16,6 +16,9 @@ public class User extends Updater{
     }
 
     // Getter
+    public String getName() {
+        return name;
+    }
     public Habitats getHabitats() {
         return habitats;
     }

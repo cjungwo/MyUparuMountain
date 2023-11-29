@@ -1,14 +1,20 @@
 package UparuMountainGUI;
 
 import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.*;
 
 import UparuMountainGUI.model.Observer;
-import UparuMountainGUI.model.User;
+import UparuMountainGUI.view.MainPanel;
+import UparuMountainGUI.view.RegisterPanel;
+import UparuMountainGUI.view.StartPanel;
 
 
 public class UparuMountainWindow extends JFrame{
-    private MainPanel mainPanel = new MainPanel();
+    private final int WIDTH = 350, HEIGHT = 600;
+
+    private CreatePanel createPanel = new CreatePanel();
 
     public UparuMountainWindow() {
         super("Uparu Mountain");
@@ -18,43 +24,47 @@ public class UparuMountainWindow extends JFrame{
     }
 
     public void setup() {
-        setBounds(0, 0, 300, 500);
+        setSize(WIDTH, HEIGHT);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+
+        createPanel.setBorder(new EmptyBorder(5,5,5,5));
     }
 
     public void build() {
-        add(mainPanel);
+        add(createPanel);
     }
 
-    private class MainPanel extends JPanel implements Observer{ 
-        User user = new User(1, "choi");
-        Listener listener = new Listener();
-        public MainPanel() {
+    public class CreatePanel extends JPanel implements Observer{ 
+        private CardLayout card = new CardLayout();
+
+        private StartPanel startPanel = new StartPanel(this);
+        private RegisterPanel registerPanel = new RegisterPanel(this);
+        private MainPanel mainPanel = new MainPanel(this);
+
+
+        public CreatePanel() {
             setup();
             build();
-            user.attach(this);
         }
-
-        public void setup() {
-
+        private void setup() {
+            setLayout(card);
         }
+        private void build() {
+            add(startPanel, "start");
+            add(registerPanel, "register");
+            add(mainPanel, "main");
 
-        public void build() {
-
-        }
+            card.show(this, "start");
+       }
 
         @Override
         public void update() {
         }
 
-        private class Listener implements ActionListener {
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-
+        public CardLayout getCardLayout() {
+            return card;
         }
     }
-
 }
