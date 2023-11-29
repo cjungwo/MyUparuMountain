@@ -43,7 +43,7 @@ public class RegisterPanel extends JPanel implements Observer{
     private class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if(nameField.getText().equals("")) {
-                warningLabel.setText("Enter name first.\n");
+                warningLabel.setText("Enter name first!!\n");
             } else {
                 cPanel.getCardLayout().show(cPanel, "main");
             }

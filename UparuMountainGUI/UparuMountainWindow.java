@@ -6,9 +6,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 import UparuMountainGUI.model.Observer;
+import UparuMountainGUI.view.FarmPanel;
+import UparuMountainGUI.view.HabitatPanel;
+import UparuMountainGUI.view.InventoryPanel;
 import UparuMountainGUI.view.MainPanel;
 import UparuMountainGUI.view.RegisterPanel;
+import UparuMountainGUI.view.ShopPanel;
 import UparuMountainGUI.view.StartPanel;
+import UparuMountainGUI.view.UparuPanel;
 
 
 public class UparuMountainWindow extends JFrame{
@@ -42,6 +47,11 @@ public class UparuMountainWindow extends JFrame{
         private StartPanel startPanel = new StartPanel(this);
         private RegisterPanel registerPanel = new RegisterPanel(this);
         private MainPanel mainPanel = new MainPanel(this);
+        private HabitatPanel habitatPanel = new HabitatPanel(this);
+        private FarmPanel farmPanel = new FarmPanel(this);
+        private UparuPanel uparuPanel = new UparuPanel(this);
+        private ShopPanel shopPanel = new ShopPanel(this);
+        private InventoryPanel inventoryPanel = new InventoryPanel(this);
 
 
         public CreatePanel() {
@@ -55,6 +65,11 @@ public class UparuMountainWindow extends JFrame{
             add(startPanel, "start");
             add(registerPanel, "register");
             add(mainPanel, "main");
+            add(habitatPanel, "habitat");
+            add(farmPanel, "farm");
+            add(uparuPanel, "uparu");
+            add(shopPanel, "shop");
+            add(inventoryPanel, "inventory");
 
             card.show(this, "start");
        }
