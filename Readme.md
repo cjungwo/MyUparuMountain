@@ -1,4 +1,4 @@
-Uparu Mountain Game
+# Uparu Mountain Game
 
 The scenario
 I decided to newly develop "Uparu Mountain," a game I had fun playing when I was young, using Java. Because the game is currently out of operation. As someone who loved this game, I'm going to release a game with a similar feel that uses the name Uparu Mountain to honor it. Uparu Mountain is a simple game that basically raises characters called uparu and makes money through uparu. In order to grow Uparu, there must be a habitat where Uparu can stay and a field to grow fruits that are food for Uparu. Since Uparus are also classified through a number of attributes, a habitat suitable for each attribute is needed. 
@@ -28,5 +28,5 @@ ConcurrenctModificationException
 This is an error that occurred in the process of removing values according to conditions while traveling through the list. If you remove the value, the index value of the list changes, causing a problem with the traversal. There are many ways to solve this problem, but I solved the simple method, for loop, by changing it to while loop. It's not a real solution, it's a bit of a trick, but I used it because it's a simple method. 
 
 
-Uparu Mountain Game GUI with JFrame
+# Uparu Mountain Game GUI with JFrame
 
