@@ -10,9 +10,21 @@ public class User extends Updater{
     private Farms farms = new Farms();
     private Inventory inventory = new Inventory();
 
-    public User(int id, String name) {
+    private User() {}
+
+    public static User getInstance() {
+        return LazyHolder.INSTANCE;
+    }
+
+    private static class LazyHolder {
+		private static final User INSTANCE = new User();
+	}
+    
+    public void set(int id, String name)
+    {
         this.id = id;
         this.name = name;
+        updateViews();
     }
 
     // Getter
@@ -69,6 +81,6 @@ public class User extends Updater{
 
     @Override
     public String toString() {
-        return "User ID : " + id + "\nUser Name : " + name + "\n" + inventory.toString() + "\n" + habitats.toString() + "\n" + farms.toString();
+        return "<html><p>User ID : " + id + "<br>User Name : " + name + "<br>" + inventory.toString() + "<br>" + habitats.toString() + "<br>" + farms.toString() + "</p></html>" ;
     }
 }

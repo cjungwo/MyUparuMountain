@@ -2,7 +2,7 @@ package UparuMountainGUI.model;
 
 import java.util.LinkedList;
 
-public class Records {
+public class Records extends Updater{
     protected LinkedList<Record> records = new LinkedList<Record>();
     protected int id = 0;
 
@@ -29,7 +29,7 @@ public class Records {
     public String toString() {
         String result = "";
         for (Record record : records) {
-            result += "\n" + record.toString();
+            result += "<br>" + record.toString();
         }   
         return result;
     }

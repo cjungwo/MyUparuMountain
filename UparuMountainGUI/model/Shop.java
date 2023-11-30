@@ -83,13 +83,13 @@ public class Shop {
     }
     private int readAction() {
         String menuString = "-------------------------" +
-        "\n         Shop" +
-        "\n-------------------------" +
-        "\n1. Uparu" +
-        "\n2. Habitat" +
-        "\n3. Farm" +
-        "\n4. Go Back" +
-        "\n-------------------------";
+        "<br>         Shop" +
+        "<br>-------------------------" +
+        "<br>1. Uparu" +
+        "<br>2. Habitat" +
+        "<br>3. Farm" +
+        "<br>4. Go Back" +
+        "<br>-------------------------";
         return In.readInt(menuString);
     }
 
@@ -110,21 +110,21 @@ public class Shop {
                         user.getInventory().consumeMoney(uparu.getPrice());
                         moveToHabitat(uparu, user.getHabitats());
                         result += "Successful Purchase!!!";
-                        result += "\nNow you have " + user.getInventory().getMoney() + ".";
+                        result += "<br>Now you have " + user.getInventory().getMoney() + ".";
                     } else {
                         result += uparu.getProperty() + " habitat is already full.";
                     }
                 } else {
                     result += "You don't have " + uparu.getProperty() + " habitat.";
-                    result += "\nPurchase your " + uparu.getProperty() + " habitat first.";
+                    result += "<br>Purchase your " + uparu.getProperty() + " habitat first.";
                 }
             } else {
                 result += "You don't have any habitat.";
-                result += "\nPurchase your habitat first.";
+                result += "<br>Purchase your habitat first.";
             }
         } else {
             result += "Oh, sorry. You cannot purchase this uparu.";
-            result += "\nBecause you have only " + user.getInventory().money + ".";
+            result += "<br>Because you have only " + user.getInventory().money + ".";
         }
         System.out.println(result);
     }
@@ -181,13 +181,13 @@ public class Shop {
                 user.getInventory().consumeMoney(habitat.getPrice());
                 user.getHabitats().add(habitat);
                 result += "Successful Purchase!";
-                result += "\nNow, you have " + user.getInventory().getMoney() + ".";
+                result += "<br>Now, you have " + user.getInventory().getMoney() + ".";
             } else {
                 result += "You already have " + habitat.getProperty() + "habitat.";
             }
         } else {
             result += "Oh, sorry. You cannot purchase this habitat.";
-            result += "\nBecause you have only " + user.getInventory().money + ".";
+            result += "<br>Because you have only " + user.getInventory().money + ".";
         }
         System.out.println(result);
     }
@@ -214,10 +214,10 @@ public class Shop {
             user.getInventory().consumeMoney(farm.getPrice());
             user.getFarms().add(farm);
             result += "Successful Purchase!";
-            result += "\nNow, you have " + user.getInventory().getMoney() + ".";
+            result += "<br>Now, you have " + user.getInventory().getMoney() + ".";
         } else {
             result += "Oh, sorry. You cannot purchase this farm.";
-            result += "\nBecause you have only " + user.getInventory().money + ".";
+            result += "<br>Because you have only " + user.getInventory().money + ".";
         }
         System.out.println(result);
     }

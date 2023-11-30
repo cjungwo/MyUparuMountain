@@ -61,16 +61,16 @@ public class Farms extends Records{
     public String toString() {
         String result = "";
         result += "     All Farm List";
-        result += "\n--------------------------";
+        result += "<br>--------------------------";
         if (records.size() == 0) {
-            result += "\nNothing in here";
+            result += "<br>Nothing in here";
         } else {
             for (Record record : records) {
-                result += "\n" + record.id + ".";
-                result += "\n" + ((Farm) record).toString();
+                result += "<br>" + record.id + ".";
+                result += "<br>" + ((Farm) record).toString();
             }
         }
-        result += "\n--------------------------";
+        result += "<br>--------------------------";
         return result;
     }
 }

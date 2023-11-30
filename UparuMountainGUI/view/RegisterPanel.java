@@ -1,51 +1,46 @@
 package UparuMountainGUI.view;
 
 import javax.swing.*;
+
+import java.awt.Dimension;
 import java.awt.event.*;
 
+import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
-import UparuMountainGUI.model.Observer;
-import UparuMountainGUI.model.User;
 
-public class RegisterPanel extends JPanel implements Observer{
-    private User user;
-    private JLabel welcomeMsg = new JLabel("Welcome to Uparu Mountain!!");
-    private JLabel nameQustion = new JLabel("What is your name?");
+public class RegisterPanel extends JPanel{
+    private JLabel welcomeMsg = new JLabel("<html><p style='text-align:center;'>Welcome to Uparu Mountain!!<br>What is your name?<p></html> ");
     private JLabel warningLabel = new JLabel();
     private JTextField nameField = new JTextField(15);
     private JButton submitBtn = new JButton("submit");
     private CreatePanel cPanel;
 
     public RegisterPanel(CreatePanel cPanel) {
-        submitBtn.addActionListener(new ButtonListener());
         setup();
         build();
         this.cPanel = cPanel;
     }
 
     private void setup() {
+        welcomeMsg.setHorizontalAlignment(JLabel.CENTER);
+        welcomeMsg.setPreferredSize(new Dimension(UparuMountainWindow.WIDTH, 450));
+        submitBtn.addActionListener(new ButtonListener());
     }
     
     private void build() {
         add(welcomeMsg);
-        add(nameQustion);
         add(warningLabel);
         add(nameField);
         add(submitBtn);
-    }
-
-
-    @Override
-    public void update() {
-        user = new User(0, nameField.getText());
     }
     
     private class ButtonListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             if(nameField.getText().equals("")) {
-                warningLabel.setText("Enter name first!!\n");
+                warningLabel.setText("Enter name first!!");
             } else {
                 cPanel.getCardLayout().show(cPanel, "main");
+                cPanel.getMainPanel().getUser().set(1, nameField.getText());
             }
         }
     }

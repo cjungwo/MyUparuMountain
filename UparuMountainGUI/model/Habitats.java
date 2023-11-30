@@ -88,16 +88,16 @@ public class Habitats extends Records{
     public String toString() {
         String result = "";
         result += "     All Habitat List";
-        result += "\n--------------------------";
+        result += "<br>--------------------------";
         if (records.size() == 0) {
-            result += "\nNothing in here";
+            result += "<br>Nothing in here";
         } else {
             for (Record record : records) {
-                result += "\n" + record.id + ". " + record.name;
-                result += "\n" + ((Habitat) record).toString();
+                result += "<br>" + record.id + ". " + record.name;
+                result += "<br>" + ((Habitat) record).toString();
             }
         }
-        result += "\n--------------------------";
+        result += "<br>--------------------------";
         return result;
     }
 }

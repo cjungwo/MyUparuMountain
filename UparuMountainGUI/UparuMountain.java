@@ -13,14 +13,14 @@ public class UparuMountain {
         System.out.println("Welcome to Uparu Mountain!!");
         System.out.println("What is your name?");
         String name = In.nextLine();
-        user = new User(0, name);
+        user = User.getInstance();
         System.out.println("Hi, " + name + "!");
-        System.out.println("Here you are! I give you an inventory. \nThere are 100 money and 100 fruits in this inventory.");
+        System.out.println("Here you are! I give you an inventory. <br>There are 100 money and 100 fruits in this inventory.");
         while (!stop) {
             menu();
         }
     }
-
+// complete
     private void menu() { 
         int action = readAction();
         switch (action) {
@@ -54,7 +54,7 @@ public class UparuMountain {
         String menuString = "Please Enter your choice (1. Show Habitats 2. Show Farms 3. Show Inventory 4. Purchase 5. User Info 6. Exit 7. Help)";
         return In.readInt(menuString);
     }
-
+// complete
     private void showInventory() {
         System.out.println(user.getInventory().toString());
     }
@@ -80,7 +80,7 @@ public class UparuMountain {
 
     private void help() {
         // 게임 도움말 참고해서 추가하기
-        String result = "Welcome to Uparu Mountain!!\nBuy a habitat with the same property as the Uparu you want to grow \nusing the 100 money and 100 fruits provided \nand buy a farm, and then you are ready to grow uparus. \nNow buy and place the uparu you want in your habitat, \nharvest money through uparus, or harvest fruit in the field to feed uparus \nand grow up uparus.";
+        String result = "Welcome to Uparu Mountain!!<br>Buy a habitat with the same property as the Uparu you want to grow <br>using the 100 money and 100 fruits provided <br>and buy a farm, and then you are ready to grow uparus. <br>Now buy and place the uparu you want in your habitat, <br>harvest money through uparus, or harvest fruit in the field to feed uparus <br>and grow up uparus.";
         System.out.println(result);
     }
 }

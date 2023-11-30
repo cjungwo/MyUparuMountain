@@ -39,16 +39,16 @@ public class Uparus extends Records{
     public String toString() {
         String result = "";
         result += "     All Uparu List";
-        result += "\n--------------------------";
+        result += "<br>--------------------------";
         if (records.size() == 0) {
-            result += "\nNothing in here";
+            result += "<br>Nothing in here";
         } else {
             for (Record record : records) {
-                result += "\n" + record.id + ".";
-                result += "\n" + ((Uparu) record).toString();
+                result += "<br>" + record.id + ".";
+                result += "<br>" + ((Uparu) record).toString();
             }
         }
-        result += "\n--------------------------";
+        result += "<br>--------------------------";
         return result;
     }
 }

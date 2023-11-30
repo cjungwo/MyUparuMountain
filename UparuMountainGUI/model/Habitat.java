@@ -95,13 +95,13 @@ public class Habitat extends Record{
 
     public String toString() {
         return "--------------------------"+
-         "\nProperty: " + property +
-         "\nUparu Capacity: " + uparuCapacity +
-         "\nTotal Money Capacity: " + moneyCapacity + 
-         "\nPrice: " + price +
-         "\nUparus In here: \n" + showUparusInHabitat() +
-         "\nTotal Harvest money: " + totalMoneyOutput() + "/5sec" +
-         "\n---------------------------";
+         "<br>Property: " + property +
+         "<br>Uparu Capacity: " + uparuCapacity +
+         "<br>Total Money Capacity: " + moneyCapacity + 
+         "<br>Price: " + price +
+         "<br>Uparus In here: <br>" + showUparusInHabitat() +
+         "<br>Total Harvest money: " + totalMoneyOutput() + "/5sec" +
+         "<br>---------------------------";
     }
     
     public String showUparusInHabitat() {

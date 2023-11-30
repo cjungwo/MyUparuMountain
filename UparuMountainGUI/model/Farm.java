@@ -34,10 +34,10 @@ public class Farm extends Record{
     
     public String toString() {
         return "-------------------------" +
-        "\nFruit Name: " + name +
-        "\nProduce Time: " + producingTime + "sec" +
-        "\nProducing Amount: " + producingAmount +
-        "\nPrice: " + price +
-        "\n-------------------------";
+        "<br>Fruit Name: " + name +
+        "<br>Produce Time: " + producingTime + "sec" +
+        "<br>Producing Amount: " + producingAmount +
+        "<br>Price: " + price +
+        "<br>-------------------------";
     }
 }

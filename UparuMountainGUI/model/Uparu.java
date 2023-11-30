@@ -56,7 +56,7 @@ public class Uparu extends Record{
         System.out.println("This " + name + " need to "
                 + (fruitsPerLevels.getFirst() - eatenFruitNum)
                 + "fruits for level up");
-        int fruitsToUse = In.readInt("How many fruits would you feed this Uparu? \nTotal "
+        int fruitsToUse = In.readInt("How many fruits would you feed this Uparu? <br>Total "
                 + inventory.getFruit() + "fruits");
         if (inventory.consumeFruit(fruitsToUse)) {
             eatenFruitNum += fruitsToUse;
@@ -81,12 +81,12 @@ public class Uparu extends Record{
 
     public String toString() {
         return "-------------------------"+
-         "\nProperty: " + property +
-         "\nUparu Name: " + name +
-         "\nLevel: " + level + 
-         "\nEaten Fruit Num: " + eatenFruitNum +
-         "\nMoney Output: " + moneyPerSecond + "/5sec" +
-         "\nPrice: " + price +
-         "\n-------------------------";
+         "<br>Property: " + property +
+         "<br>Uparu Name: " + name +
+         "<br>Level: " + level + 
+         "<br>Eaten Fruit Num: " + eatenFruitNum +
+         "<br>Money Output: " + moneyPerSecond + "/5sec" +
+         "<br>Price: " + price +
+         "<br>-------------------------";
     }
 }

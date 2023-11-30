@@ -57,11 +57,11 @@ public class Inventory {
 
     public String toString() {
         return 
-        "-------------------------" +
-        "\n       Inventory" + 
-        "\n-------------------------" +
-        "\nTotal Money: " + money + 
-        "\nTotal Fruit: " + fruit +
-        "\n-------------------------";
+        "<html><p>-------------------------" +
+        "<br>Inventory" + 
+        "<br>-------------------------" +
+        "<br>Total Money: " + money + 
+        "<br>Total Fruit: " + fruit +
+        "<br>-------------------------</p><html>";
     }
 }

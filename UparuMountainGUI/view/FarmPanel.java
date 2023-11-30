@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
+import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.model.Farm;
 import UparuMountainGUI.model.Observer;
 
