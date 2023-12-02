@@ -1,8 +1,6 @@
 package UparuMountainGUI.model;
 
-import UparuMountainGUI.In;
-
-public class Shop {
+public class Shop extends Updater{
     private Uparus shopUparus = new Uparus();
     private Habitats shopHabitats = new Habitats();
     private Farms shopFarms = new Farms();
@@ -41,67 +39,24 @@ public class Shop {
         shopFarms.add("WaterMelon", 6, 300, 2500);
     }
 
-    public void menu(User user) {
-        Record result = null;
-        int action = readAction();
-        switch (action) {
-            case 1:
-                result = selectUparu();
-                if (result != null) {
-                    System.out.println("You choose " + result.getName() + ".");
-                    purchaseUparu((Uparu) result, user);
-                } else {
-                    System.out.println("You choose wrong number");
-                }
-                break;
-            case 2:
-                result = selectHabitat();
-                if (result != null) {
-                    System.out.println("You choose " + result.getName() + ".");
-                    purchaseHabitat((Habitat) result, user);
-                } else {
-                    System.out.println("You choose wrong number");
-                }
-                break;
-            case 3:
-                result = selectFarm();
-                if (result != null) {
-                    System.out.println("You choose " + result.getName() + ".");
-                    purchaseFarm((Farm) result, user);
-                } else {
-                    System.out.println("You choose wrong number");
-                }
-                break;
-            case 4:
-                System.out.println("Go back to main menu.");
-                break;
-            default:
-                System.out.println("You chose wrong number.");
-                System.out.println("Go back to main menu.");
-                break;
-        }
+    // getter
+    public Habitats getShopHabitats() {
+        return shopHabitats;
     }
-    private int readAction() {
-        String menuString = "-------------------------" +
-        "<br>         Shop" +
-        "<br>-------------------------" +
-        "<br>1. Uparu" +
-        "<br>2. Habitat" +
-        "<br>3. Farm" +
-        "<br>4. Go Back" +
-        "<br>-------------------------";
-        return In.readInt(menuString);
+    public Uparus getShopUparus() {
+        return shopUparus;
+    }
+    public Farms getShopFarms() {
+        return shopFarms;
     }
 
-    private Uparu selectUparu() {
+    public Uparu selectUparu(int selection) {
         Uparu result = null;
-        shopUparus.show();
-        int selection = In.readInt("Which one do you like?");
         result = shopUparus.find(selection);
         return result;
     }
 
-    private void purchaseUparu(Uparu uparu, User user) {
+    public void purchaseUparu(Uparu uparu, User user) {
         String result = "";
         if (checkMoneyPrice(uparu.getPrice(), user.getInventory())) {
             if (hasHabitat(user.getHabitats())) {
@@ -111,6 +66,7 @@ public class Shop {
                         moveToHabitat(uparu, user.getHabitats());
                         result += "Successful Purchase!!!";
                         result += "<br>Now you have " + user.getInventory().getMoney() + ".";
+                        updateViews();
                     } else {
                         result += uparu.getProperty() + " habitat is already full.";
                     }
@@ -167,14 +123,12 @@ public class Shop {
     }
 
 
-    private Habitat selectHabitat() {
+    public Habitat selectHabitat(int selection) {
         Habitat result = null;
-        shopHabitats.show();
-        int selection = In.readInt("Which one do you like?");
         result = shopHabitats.find(selection);
         return result;
     }
-    private void purchaseHabitat(Habitat habitat, User user) {
+    public void purchaseHabitat(Habitat habitat, User user) {
         String result = "";
         if (checkMoneyPrice(habitat.getPrice(), user.getInventory())) {
             if (checkHabitatProperty(habitat, user.getHabitats())) {
@@ -182,6 +136,7 @@ public class Shop {
                 user.getHabitats().add(habitat);
                 result += "Successful Purchase!";
                 result += "<br>Now, you have " + user.getInventory().getMoney() + ".";
+                updateViews();
             } else {
                 result += "You already have " + habitat.getProperty() + "habitat.";
             }
@@ -201,20 +156,19 @@ public class Shop {
         return result;
     }
 
-    private Farm selectFarm() {
+    public Farm selectFarm(int selection) {
         Farm result = null;
-        shopFarms.show();
-        int selection = In.readInt("Which one do you like?");
         result = shopFarms.find(selection);
         return result;
     }
-    private void purchaseFarm(Farm farm, User user) {
+    public void purchaseFarm(Farm farm, User user) {
         String result = "";
         if (checkMoneyPrice(farm.getPrice(), user.getInventory())) {
             user.getInventory().consumeMoney(farm.getPrice());
             user.getFarms().add(farm);
             result += "Successful Purchase!";
             result += "<br>Now, you have " + user.getInventory().getMoney() + ".";
+            updateViews();
         } else {
             result += "Oh, sorry. You cannot purchase this farm.";
             result += "<br>Because you have only " + user.getInventory().money + ".";

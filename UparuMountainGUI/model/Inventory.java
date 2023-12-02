@@ -1,6 +1,6 @@
 package UparuMountainGUI.model;
 
-public class Inventory {
+public class Inventory extends Updater{
     int money;
     int fruit;
 
@@ -23,18 +23,22 @@ public class Inventory {
 
     public void setFruit(int fruit) {
         this.fruit = fruit;
+        updateViews();
     }
     
     public void saveMoney(double producedMoney) {
         money += producedMoney;
+        updateViews();
     }
 
     public void saveFruit(int producedFruitNum) {
         fruit += producedFruitNum;
+        updateViews();
     }
 
     public void consumeMoney(double price) {
         money -= price;
+        updateViews();
     }
 
     public boolean consumeFruit(int fruitsToUse) {
@@ -42,6 +46,7 @@ public class Inventory {
         if (checkFruitsNumber(fruitsToUse)) {
             fruit -= fruitsToUse;
             result = true;
+            updateViews();
         } else {
             System.out.println("You don't have enough fruits.");
         }

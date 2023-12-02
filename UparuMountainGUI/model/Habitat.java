@@ -99,7 +99,7 @@ public class Habitat extends Record{
          "<br>Uparu Capacity: " + uparuCapacity +
          "<br>Total Money Capacity: " + moneyCapacity + 
          "<br>Price: " + price +
-         "<br>Uparus In here: <br>" + showUparusInHabitat() +
+        //  "<br>Uparus In here: <br>" + showUparusInHabitat() +
          "<br>Total Harvest money: " + totalMoneyOutput() + "/5sec" +
          "<br>---------------------------";
     }

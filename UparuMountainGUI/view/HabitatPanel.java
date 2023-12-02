@@ -1,7 +1,6 @@
 package UparuMountainGUI.view;
 
 import javax.swing.*;
-import java.awt.event.*;
 
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.controller.NavListener;

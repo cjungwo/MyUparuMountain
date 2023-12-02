@@ -59,18 +59,18 @@ public class Farms extends Records{
     }
 
     public String toString() {
-        String result = "";
+        String result = "<html><p style='text-align:center;'>";
         result += "     All Farm List";
         result += "<br>--------------------------";
         if (records.size() == 0) {
             result += "<br>Nothing in here";
         } else {
             for (Record record : records) {
-                result += "<br>" + record.id + ".";
+                result += "<br>" + record.id + ". " + record.name + "Farm" ;
                 result += "<br>" + ((Farm) record).toString();
             }
         }
-        result += "<br>--------------------------";
+        result += "<br>--------------------------</p></html>";
         return result;
     }
 }

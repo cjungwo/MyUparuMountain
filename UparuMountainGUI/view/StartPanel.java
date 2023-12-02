@@ -4,26 +4,26 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.model.Observer;
 
 public class StartPanel extends JPanel implements Observer{ 
     private CreatePanel cPanel;
 
-    JLabel title = new JLabel("Uparu Mountain");
+    JLabel title = new JLabel("Uparu Mountain", JLabel.CENTER);
     JButton startBtn = new JButton("Start");
 
     public StartPanel(CreatePanel cPanel) {
+        this.cPanel = cPanel;
         setup();
         build();
-        this.cPanel = cPanel;
     }
     public void setup() {
-        title.setBackground(Color.red);
-        title.setSize(WIDTH, 400);
+        setLayout(new FlowLayout());
+        title.setPreferredSize(new Dimension(UparuMountainWindow.WIDTH, 400));
+        title.setFont(new Font(Font.SERIF, Font.BOLD, 20));
 
-        startBtn.setBackground(Color.green);
-        startBtn.setSize(WIDTH, 200);
         startBtn.addActionListener(new Listener());
     }
 

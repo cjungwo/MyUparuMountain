@@ -27,10 +27,11 @@ public class Records extends Updater{
     }
 
     public String toString() {
-        String result = "";
+        String result = "<html><p>";
         for (Record record : records) {
             result += "<br>" + record.toString();
-        }   
+        }
+        result += "</p></html>";
         return result;
     }
 }

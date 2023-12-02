@@ -1,10 +1,9 @@
 package UparuMountainGUI.view;
 
 import javax.swing.*;
-import java.awt.event.*;
 
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
-import UparuMountainGUI.UparuMountainWindow.CreatePanel;
+import UparuMountainGUI.controller.NavListener;
 import UparuMountainGUI.model.Farm;
 import UparuMountainGUI.model.Observer;
 
@@ -17,14 +16,14 @@ public class FarmPanel extends JPanel implements Observer{
     private JButton backBtn = new JButton("Back");
 
     public FarmPanel(CreatePanel cPanel) {
+        this.cPanel = cPanel;
         setup();
         build();
-        this.cPanel = cPanel;
     }
 
     public void setup() {
-        harvestBtn.addActionListener(new Listener("harvestFruit"));
-        backBtn.addActionListener(new Listener("main"));
+        harvestBtn.addActionListener(new NavListener(cPanel, "harvestFruit"));
+        backBtn.addActionListener(new NavListener(cPanel, "main"));
     }
 
     public void build() {
@@ -35,18 +34,6 @@ public class FarmPanel extends JPanel implements Observer{
 
     @Override
     public void update() {
-    }
 
-    private class Listener implements ActionListener {
-        String goTo;
-
-        Listener(String goTo) {
-            this.goTo = goTo;
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            cPanel.getCardLayout().show(cPanel, goTo);
-        }
     }
 }

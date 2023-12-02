@@ -86,7 +86,7 @@ public class Habitats extends Records{
     }
 
     public String toString() {
-        String result = "";
+        String result = "<html><p style='text-align:center;'>";
         result += "     All Habitat List";
         result += "<br>--------------------------";
         if (records.size() == 0) {
@@ -97,7 +97,7 @@ public class Habitats extends Records{
                 result += "<br>" + ((Habitat) record).toString();
             }
         }
-        result += "<br>--------------------------";
+        result += "<br>--------------------------</p></html>";
         return result;
     }
 }

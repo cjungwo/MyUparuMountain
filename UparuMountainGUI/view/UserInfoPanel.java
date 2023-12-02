@@ -13,7 +13,7 @@ public class UserInfoPanel extends JPanel implements Observer{
     private CreatePanel cPanel;
     private User user = User.getInstance();
 
-    private JLabel userInfoLabel = new JLabel();
+    private JLabel userInfoLabel = new JLabel("", JLabel.CENTER);
     private JButton backBtn = new JButton("Back");
     private JScrollPane scroller = new JScrollPane(userInfoLabel, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -26,7 +26,6 @@ public class UserInfoPanel extends JPanel implements Observer{
     }
 
     private void setup() {
-        userInfoLabel.setHorizontalAlignment(JLabel.CENTER);
         userInfoLabel.setPreferredSize(new Dimension(350, 400));
         backBtn.addActionListener(new NavListener(cPanel, "main"));
     }

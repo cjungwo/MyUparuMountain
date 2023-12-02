@@ -37,18 +37,18 @@ public class Uparus extends Records{
     }
 
     public String toString() {
-        String result = "";
+        String result = "<html><p style='text-align:center;'>";
         result += "     All Uparu List";
         result += "<br>--------------------------";
         if (records.size() == 0) {
             result += "<br>Nothing in here";
         } else {
             for (Record record : records) {
-                result += "<br>" + record.id + ".";
+                result += "<br>" + record.id + ". " + record.name;
                 result += "<br>" + ((Uparu) record).toString();
             }
         }
-        result += "<br>--------------------------";
+        result += "<br>--------------------------</p></html>";
         return result;
     }
 }
