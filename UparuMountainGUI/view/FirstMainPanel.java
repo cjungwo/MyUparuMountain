@@ -11,7 +11,7 @@ import UparuMountainGUI.controller.NavListener;
 import UparuMountainGUI.model.Observer;
 import UparuMountainGUI.model.User;
 
-public class MainPanel extends JPanel{
+public class FirstMainPanel extends JPanel{
     private TopPanel topPanel;
     private CenterPanel centerPanel;
     private CreatePanel cPanel;
@@ -22,7 +22,7 @@ public class MainPanel extends JPanel{
     private JButton inventoryBtn = new JButton("Inventory");
     private JButton shopBtn = new JButton("Shop");
 
-    public MainPanel(CreatePanel cPanel) {
+    public FirstMainPanel(CreatePanel cPanel) {
         this.cPanel = cPanel;
         setup();
         build();
@@ -80,7 +80,7 @@ public class MainPanel extends JPanel{
     }
 
     private class CenterPanel extends JPanel implements Observer{
-        private JLabel mainLabel = new JLabel();
+        private JLabel greetingLabel = new JLabel();
 
         CenterPanel() {
             setup();
@@ -92,12 +92,12 @@ public class MainPanel extends JPanel{
         }
 
         private void build() {
-            add(mainLabel);
+            add(greetingLabel);
         }
 
         @Override
         public void update() {
-            mainLabel.setText("<html><p style='text-align:center;'>Hello</p></html>");
+            greetingLabel.setText("<html><p style='text-align:center;'>Hi, " + user.getName() + ". Here you are! <br>I give you an inventory. <br>There are 100 money and 100 fruits in this inventory.</p></html>");
         }
     }
 }

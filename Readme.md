@@ -36,3 +36,6 @@ This is an error that occurred in the process of removing values according to co
 3. Including models each panel
 4. Connecting functions each panel
 5. Design panels
+
+## Requirements
+[] Press enter key -> submit

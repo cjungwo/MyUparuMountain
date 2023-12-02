@@ -5,6 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import UparuMountainGUI.view.FarmPanel;
+import UparuMountainGUI.view.FirstMainPanel;
 import UparuMountainGUI.view.HabitatPanel;
 import UparuMountainGUI.view.HelpPanel;
 import UparuMountainGUI.view.InventoryPanel;
@@ -45,6 +46,8 @@ public class UparuMountainWindow extends JFrame{
         private StartPanel startPanel = new StartPanel(this);
         private RegisterPanel registerPanel = new RegisterPanel(this);
 
+        private FirstMainPanel firstMainPanel = new FirstMainPanel(this);
+
         private UserInfoPanel userInfoPanel = new UserInfoPanel(this);
         private HelpPanel helpPanel = new HelpPanel(this);
 
@@ -65,6 +68,7 @@ public class UparuMountainWindow extends JFrame{
         private void build() {
             add(startPanel, "start");
             add(registerPanel, "register");
+            add(firstMainPanel, "firstMain");
 
             add(userInfoPanel, "userInfo");
             add(helpPanel, "help");

@@ -39,7 +39,7 @@ public class RegisterPanel extends JPanel{
             if(nameField.getText().equals("")) {
                 warningLabel.setText("Enter name first!!");
             } else {
-                cPanel.getCardLayout().show(cPanel, "main");
+                cPanel.getCardLayout().show(cPanel, "firstMain");
                 cPanel.getMainPanel().getUser().set(1, nameField.getText());
             }
         }
