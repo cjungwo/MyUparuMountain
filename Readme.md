@@ -42,3 +42,9 @@ This is an error that occurred in the process of removing values according to co
 
 ## Chellenge
 [] How uparu list in habitat updates?
+
+2023/12/02
+[O] ShopPanel
+
+2023/12/04
+[] HabitatPanel
