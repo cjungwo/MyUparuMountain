@@ -33,18 +33,31 @@ This is an error that occurred in the process of removing values according to co
 
 1. ~~Drawing ui design~~
 2. ~~Coding view panel~~
-3. Including models each panel
+3. ~~Including models each panel~~
 4. Connecting functions each panel
 5. Design panels
 
 ## Requirements
 [] Press enter key -> submit
+[] Make CardPanel then inherite this to whole card layout and combine navListeners to one.
 
 ## Chellenge
 [] How uparu list in habitat updates?
+[] if list size 0, buttons cannot visible.
+
+2023/11/29
+[O] Update readme
+[O] Coding view panel
+
+2023/12/01
+[O] Connecting user info
 
 2023/12/02
 [O] ShopPanel
+[O] Add first main panel
 
 2023/12/04
-[] HabitatPanel
+[O] Add purchase label in ShopPanel
+[O] Create NumberInputListener to control input number for various list
+[O] Connecting HabitatPanel, FarmPanel and InventoryPanel
+[O] Connecting harvest function of HabitatPanel

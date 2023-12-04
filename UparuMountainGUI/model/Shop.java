@@ -134,7 +134,7 @@ public class Shop extends Updater{
         if (checkMoneyPrice(habitat.getPrice(), user.getInventory())) {
             if (checkHabitatProperty(habitat, user.getHabitats())) {
                 user.getInventory().consumeMoney(habitat.getPrice());
-                user.getHabitats().add(habitat);
+                user.getHabitats().add(habitat.getName(), habitat.getProperty(), habitat.getMoneyCapacity(), habitat.getUparuCapacity(), habitat.getPrice());
                 result += "Successful Purchase!";
                 result += "<br>Now, you have " + user.getInventory().getMoney() + ".";
                 updateViews();
@@ -167,7 +167,7 @@ public class Shop extends Updater{
         String result = "<html><p style='text-align:center'>";
         if (checkMoneyPrice(farm.getPrice(), user.getInventory())) {
             user.getInventory().consumeMoney(farm.getPrice());
-            user.getFarms().add(farm);
+            user.getFarms().add(farm.getName(), farm.getProducingTime(), farm.getProducingAmount(), farm.getPrice());
             result += "Successful Purchase!";
             result += "<br>Now, you have " + user.getInventory().getMoney() + ".";
             updateViews();

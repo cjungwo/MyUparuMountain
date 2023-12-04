@@ -15,13 +15,13 @@ import UparuMountainGUI.model.Shop;
 import UparuMountainGUI.model.User;
 
 public class ShopPanel extends JPanel{
+    private CreatePanel cPanel;
+
     private User user = User.getInstance();
     private CardLayout card = new CardLayout();
-    
-    private CreatePanel cPanel;
     private Shop shop = new Shop();
 
-    private ShopLobbyPanel shopLobbyPanel;
+    private LobbyPanel lobbyPanel;
     private ShopHabitatPanel shopHabitatPanel;
     private ShopUparuPanel shopUparuPanel;
     private ShopFarmPanel shopFarmPanel;
@@ -34,14 +34,14 @@ public class ShopPanel extends JPanel{
 
     public void setup() {
         setLayout(card);
-        shopLobbyPanel = new ShopLobbyPanel(this);
+        lobbyPanel = new LobbyPanel(this);
         shopHabitatPanel = new ShopHabitatPanel(this);
         shopUparuPanel = new ShopUparuPanel(this);
         shopFarmPanel = new ShopFarmPanel(this);
     }
 
     public void build() {
-        add(shopLobbyPanel, "lobby");
+        add(lobbyPanel, "lobby");
         add(shopHabitatPanel, "habitat");
         add(shopUparuPanel, "uparu");
         add(shopFarmPanel, "farm");
@@ -53,7 +53,7 @@ public class ShopPanel extends JPanel{
         return card;
     }
 
-    private class ShopLobbyPanel extends JPanel {
+    private class LobbyPanel extends JPanel {
         private ShopPanel shopPanel;
         private JButton habitatListBtn = new JButton("Habitat");
         private JButton uparuListBtn = new JButton("Uparu");
@@ -61,7 +61,7 @@ public class ShopPanel extends JPanel{
         private JButton backBtn = new JButton("Back");
 
 
-        public ShopLobbyPanel(ShopPanel shopPanel) {
+        public LobbyPanel(ShopPanel shopPanel) {
             this.shopPanel = shopPanel;
             setup();
             build();

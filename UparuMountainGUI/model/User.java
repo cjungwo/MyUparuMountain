@@ -43,23 +43,9 @@ public class User extends Updater{
         return inventory;
     }
 
-    public void feedInHabitat(Habitat habitat) {
-        System.out.println("Do you want to feed your uparu? (Y/N)");
-        char choice = In.nextUpperChar();
-        if (choice == 'Y') {
-            Uparu selectUparu = habitat.getUparusInHabitat().selectUparu();
-            if (selectUparu != null) {
-                selectUparu.eatFruit(inventory);
-            }
-        }
-    }
-
-    public void harvestMoney() {
-        Habitat selectHabitat = habitats.selectHabitat();
-        if (selectHabitat != null) {
-            selectHabitat.harvestMoney(inventory);
-            updateViews();
-        }
+    public void harvestMoney(Habitat habitat) {
+        habitat.harvestMoney(inventory);
+        updateViews();
     }
 
     public void harvestFruit() {

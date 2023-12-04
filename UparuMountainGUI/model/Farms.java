@@ -5,34 +5,6 @@ import UparuMountainGUI.In;
 public class Farms extends Records{
     public Farms() {}
 
-    public void menu(User user) {
-        if (records.size() != 0) {
-            int action = readAction();
-            switch (action) {
-                case 1:
-                    user.harvestFruit();
-                    break;
-                case 2:
-                    System.out.println("Go back to main menu.");
-                    break;
-                default:
-                    System.out.println("You chose wrong number.");
-                    break;
-            }
-        }
-    }
-    private int readAction() {
-        return In.readInt(
-                "Please Enter your choice (1. Harvest fruits 2. Exit)");
-    }
-
-    public void add(Farm farm) {
-        int previousId = farm.getId();
-        farm.setId(++id);
-        records.add(farm);
-        farm.setId(previousId);
-        updateViews();
-    }
     public void add(String name, int producingTime, int producingAmount, int price) {
         Farm farm = new Farm(++id, name, producingTime,producingAmount, price);
         records.add(farm);

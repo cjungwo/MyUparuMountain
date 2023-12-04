@@ -2,8 +2,6 @@ package UparuMountainGUI.model;
 
 import java.util.LinkedList;
 
-import UparuMountainGUI.In;
-
 public class Uparu extends Record{
     protected int level = 1;
     protected Property property;
@@ -53,33 +51,37 @@ public class Uparu extends Record{
         updateViews();
     }
 
-    public void eatFruit(Inventory inventory) {
-        System.out.println("This " + name + " need to "
-                + (fruitsPerLevels.getFirst() - eatenFruitNum)
-                + "fruits for level up");
-        int fruitsToUse = In.readInt("How many fruits would you feed this Uparu? <br>Total "
-                + inventory.getFruit() + "fruits");
-        if (inventory.consumeFruit(fruitsToUse)) {
-            eatenFruitNum += fruitsToUse;
-            System.out.println(name + " ate " + fruitsToUse + "fruits.");
-            updateViews();
+    public String eatFruit(Inventory inventory, int fruitsToUse) {
+        String result = "<html><p style='text-align:center'>";
+        if (inventory.getFruit() >= fruitsToUse) {
+            if (inventory.consumeFruit(fruitsToUse)) {
+                eatenFruitNum += fruitsToUse;
+                result += name + " ate " + fruitsToUse + " fruits.";
+                updateViews();
+            }
+            result += levelUp();
+            result += "<br>" + name + "'s total eaten fruits are " + eatenFruitNum;
+        } else {
+            result += "You have only " + inventory.getFruit() + " fruits.";
         }
-        levelUp();
-        System.out.println(name + "'s total eaten fruits are " + eatenFruitNum);
+        result += "</p></html>";
+        return result;
     }
-    private void levelUp() {
+    private String levelUp() {
+        String result = "";
         boolean stop = false;
         do {
             if (fruitsPerLevels.getFirst() <= eatenFruitNum) {
                 level++;
-                System.out.println("Level up!!");
-                System.out.println("Now this " + name + " is Level" + level);
+                result += "<br>Level up!!";
+                result += "<br>Now this " + name + " is Level" + level;
                 fruitsPerLevels.removeFirst();
                 updateViews();
             } else {
                 stop = true;
             }
         } while (!stop);
+        return result;
     }
 
     public String toString() {

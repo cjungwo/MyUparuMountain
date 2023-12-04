@@ -3,7 +3,6 @@ package UparuMountainGUI.view;
 import javax.swing.*;
 
 import java.awt.Dimension;
-import java.awt.event.*;
 
 import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
@@ -22,9 +21,9 @@ public class InventoryPanel extends JPanel implements Observer{
 
     public InventoryPanel(CreatePanel cPanel) {
         this.cPanel = cPanel;
+        user.getInventory().attach(this);
         setup();
         build();
-        user.getInventory().attach(this);
     }
 
     public void setup() {
@@ -41,5 +40,6 @@ public class InventoryPanel extends JPanel implements Observer{
 
     @Override
     public void update() {
+        inventoryLabel.setText(user.getInventory().toString());
     }
 }

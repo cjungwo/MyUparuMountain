@@ -19,6 +19,7 @@ public class NumberInputListener extends KeyAdapter{
             textField.setEditable(true);
             label.setText("");
         } else {
+            textField.setText("");
             textField.setEditable(false);
             label.setText("* Enter only numeric digits(1 ~ " + listSize + ")");
         }

@@ -13,7 +13,6 @@ import UparuMountainGUI.view.MainPanel;
 import UparuMountainGUI.view.RegisterPanel;
 import UparuMountainGUI.view.ShopPanel;
 import UparuMountainGUI.view.StartPanel;
-import UparuMountainGUI.view.UparuPanel;
 import UparuMountainGUI.view.UserInfoPanel;
 
 
@@ -54,7 +53,6 @@ public class UparuMountainWindow extends JFrame{
         private MainPanel mainPanel = new MainPanel(this);
         private HabitatPanel habitatPanel = new HabitatPanel(this);
         private FarmPanel farmPanel = new FarmPanel(this);
-        private UparuPanel uparuPanel = new UparuPanel(this);
         private ShopPanel shopPanel = new ShopPanel(this);
         private InventoryPanel inventoryPanel = new InventoryPanel(this);
 
@@ -76,7 +74,6 @@ public class UparuMountainWindow extends JFrame{
             add(mainPanel, "main");
             add(habitatPanel, "habitat");
             add(farmPanel, "farm");
-            add(uparuPanel, "uparu");
             add(shopPanel, "shop");
             add(inventoryPanel, "inventory");
 

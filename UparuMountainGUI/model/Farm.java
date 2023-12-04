@@ -5,19 +5,25 @@ import java.util.concurrent.TimeUnit;
 public class Farm extends Record{
     private int producingTime;
     private int producingAmount;
+    
     private int price;
-
+    
     public Farm(int id, String name, int producingTime, int producingAmount, int price) {
         super(id, name);
         this.producingTime = producingTime;
         this.producingAmount = producingAmount;
         this.price = price;
     }
-
+    
     //Getter
     public int getProducingTime() {
         return producingTime;
     }
+
+    public int getProducingAmount() {
+        return producingAmount;
+    }
+    
     public int getPrice() {
         return price;
     }

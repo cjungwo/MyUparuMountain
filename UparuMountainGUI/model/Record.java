@@ -1,7 +1,7 @@
 package UparuMountainGUI.model;
 
 public class Record extends Updater{
-    protected int id;
+    protected int id = 0;
     protected String name;
 
     public Record(int id, String name) {
