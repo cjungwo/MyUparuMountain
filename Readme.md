@@ -39,3 +39,6 @@ This is an error that occurred in the process of removing values according to co
 
 ## Requirements
 [] Press enter key -> submit
+
+## Chellenge
+[] How uparu list in habitat updates?

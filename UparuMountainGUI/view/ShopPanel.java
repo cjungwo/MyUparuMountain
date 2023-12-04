@@ -10,11 +10,10 @@ import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.controller.NavListener;
 import UparuMountainGUI.controller.ShopNavListener;
-import UparuMountainGUI.model.Observer;
 import UparuMountainGUI.model.Shop;
 import UparuMountainGUI.model.User;
 
-public class ShopPanel extends JPanel implements Observer{
+public class ShopPanel extends JPanel{
     private User user = User.getInstance();
     private CardLayout card = new CardLayout();
     
@@ -30,8 +29,6 @@ public class ShopPanel extends JPanel implements Observer{
         this.cPanel = cPanel;
         setup();
         build();
-        user.attach(this);
-        shop.attach(this);
     }
 
     public void setup() {
@@ -40,8 +37,6 @@ public class ShopPanel extends JPanel implements Observer{
         shopHabitatPanel = new ShopHabitatPanel(this);
         shopUparuPanel = new ShopUparuPanel(this);
         shopFarmPanel = new ShopFarmPanel(this);
-
-        shop.attach(this);
     }
 
     public void build() {
@@ -51,10 +46,6 @@ public class ShopPanel extends JPanel implements Observer{
         add(shopFarmPanel, "farm");
 
         card.show(this, "lobby");
-    }
-
-    @Override
-    public void update() {
     }
 
     public CardLayout getCardLayout() {
@@ -100,6 +91,7 @@ public class ShopPanel extends JPanel implements Observer{
                     JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         JLabel warningMsg = new JLabel();
+        JLabel purchaseLabel = new JLabel();       
         JTextField field = new JTextField(20);
         JButton purchaseBtn = new JButton("Buy");
         JButton backBtn = new JButton("Back");
@@ -133,6 +125,7 @@ public class ShopPanel extends JPanel implements Observer{
             add(scroller);
 
             add(warningMsg);
+            add(purchaseLabel);
             add(field);
             add(purchaseBtn);
             add(backBtn);
@@ -144,7 +137,7 @@ public class ShopPanel extends JPanel implements Observer{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                shop.purchaseHabitat(shop.selectHabitat(Integer.parseInt(field.getText())), user);
+                purchaseLabel.setText(shop.purchaseHabitat(shop.selectHabitat(Integer.parseInt(field.getText())), user));
                 field.setText("");
             }
         }
@@ -156,6 +149,7 @@ public class ShopPanel extends JPanel implements Observer{
                     JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         
         JLabel warningMsg = new JLabel();
+        JLabel purchaseLabel = new JLabel();       
         JTextField field = new JTextField(20);
         JButton purchaseBtn = new JButton("Buy");
         JButton backBtn = new JButton("Back");
@@ -188,6 +182,7 @@ public class ShopPanel extends JPanel implements Observer{
             add(scroller);
 
             add(warningMsg);
+            add(purchaseLabel);
             add(field);
             add(purchaseBtn);
             add(backBtn);
@@ -199,7 +194,7 @@ public class ShopPanel extends JPanel implements Observer{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                shop.purchaseUparu(shop.selectUparu(Integer.parseInt(field.getText())), user);
+                purchaseLabel.setText(shop.purchaseUparu(shop.selectUparu(Integer.parseInt(field.getText())), user));
                 field.setText("");
             }
         }
@@ -213,6 +208,7 @@ public class ShopPanel extends JPanel implements Observer{
         JLabel warningMsg = new JLabel();                   
         JTextField field = new JTextField(20);
         JButton purchaseBtn = new JButton("Buy");
+        JLabel purchaseLabel = new JLabel();
         JButton backBtn = new JButton("Back");
 
         public ShopFarmPanel(ShopPanel shopPanel) {
@@ -243,6 +239,7 @@ public class ShopPanel extends JPanel implements Observer{
             add(scroller);
 
             add(warningMsg);
+            add(purchaseLabel);
             add(field);
             add(purchaseBtn);
             add(backBtn);
@@ -254,7 +251,7 @@ public class ShopPanel extends JPanel implements Observer{
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                shop.purchaseFarm(shop.selectFarm(Integer.parseInt(field.getText())), user);
+                purchaseLabel.setText(shop.purchaseFarm(shop.selectFarm(Integer.parseInt(field.getText())), user));
                 field.setText("");
             }
         }

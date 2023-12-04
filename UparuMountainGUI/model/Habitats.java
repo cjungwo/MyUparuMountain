@@ -39,11 +39,13 @@ public class Habitats extends Records{
         habitat.setId(++id);
         records.add(habitat);
         habitat.setId(previousId);
+        updateViews();
     }
 
     public void add(String name, Property property, int moneyCapacity, int uparuCapacity, int price) {
         Habitat habitat = new Habitat(++id, name, property, moneyCapacity, uparuCapacity, price);
         records.add(habitat);
+        updateViews();
     }
 
     public Habitat find(int id) {
@@ -77,6 +79,7 @@ public class Habitats extends Records{
             System.out.println(selectHabitat.showUparusInHabitat());
             if (!selectHabitat.checkEmpty()) {
                 user.feedInHabitat(selectHabitat);
+                updateViews();
             }
         }
     }

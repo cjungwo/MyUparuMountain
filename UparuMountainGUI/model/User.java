@@ -43,17 +43,6 @@ public class User extends Updater{
         return inventory;
     }
 
-
-    public void showHabitats() {
-        habitats.show();
-        habitats.menu(this);
-    }
-
-    public void showFarms() {
-        farms.show();
-        farms.menu(this);
-    }
-
     public void feedInHabitat(Habitat habitat) {
         System.out.println("Do you want to feed your uparu? (Y/N)");
         char choice = In.nextUpperChar();
@@ -69,6 +58,7 @@ public class User extends Updater{
         Habitat selectHabitat = habitats.selectHabitat();
         if (selectHabitat != null) {
             selectHabitat.harvestMoney(inventory);
+            updateViews();
         }
     }
 
@@ -76,11 +66,37 @@ public class User extends Updater{
         Farm selectFarm = farms.selectFarm();
         if (selectFarm != null) {
             selectFarm.harvestFruit(inventory);
+            updateViews();
         }
     }
 
     @Override
     public String toString() {
-        return "<html><p>User ID : " + id + "<br>User Name : " + name + "<br>" + inventory.toString() + "<br>" + habitats.toString() + "<br>" + farms.toString() + "</p></html>" ;
+        return "<html><p>User ID : " + id + "<br>User Name : " + name + "<br>" + inventory.toString() + "<br>" + allUparus() + "<br>" + farms.toString() + "</p></html>" ;
+    }
+    private String allUparus() {
+        String result = "<p style='text-align:center'>";
+        String uparus = "";
+        result += "     All Uparu List";
+        result += "<br>--------------------------";
+        int i = 1;
+        if (habitats.getSize() == 0) {
+            result += "<br>Nothing in here";
+        } else {
+            for (Record record : habitats.getRecords()) {
+                Habitat habitat = (Habitat) record;
+                for (Record record2 : habitat.getUparusInHabitat().getRecords()) {
+                    Uparu uparu = (Uparu) record2;
+                    uparus += "<br>" + i++ + ". "+ uparu.getName();
+                }
+            }
+            if (uparus.equals("")) {
+                result += "<br>Nothing in here";
+            } else {
+                result += uparus;
+            }
+        }
+        result += "<br>--------------------------</p>";
+        return result;
     }
 }

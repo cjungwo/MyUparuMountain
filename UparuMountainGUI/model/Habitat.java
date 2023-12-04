@@ -34,6 +34,7 @@ public class Habitat extends Record{
 
     public void addUparu(String name, Property property, int moneyPerSecond, int price) {
         uparusInHabitat.add(name, property, moneyPerSecond, price);
+        updateViews();
     }
 
     public boolean checkHabitatSize() {
@@ -58,6 +59,7 @@ public class Habitat extends Record{
 
             System.out.println("The accumulated money so far is " + producedMoney);
             showMoneyOutput(producedMoney, inventory);
+            updateViews();
         }
     }
 
@@ -87,6 +89,7 @@ public class Habitat extends Record{
                 TimeUnit.SECONDS.sleep(5);
                 System.out.println("Succeed producing Money.");
                 inventory.saveMoney(producedMoney);
+                updateViews();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -56,8 +56,8 @@ public class Shop extends Updater{
         return result;
     }
 
-    public void purchaseUparu(Uparu uparu, User user) {
-        String result = "";
+    public String purchaseUparu(Uparu uparu, User user) {
+        String result = "<html><p style='text-align:center'>";
         if (checkMoneyPrice(uparu.getPrice(), user.getInventory())) {
             if (hasHabitat(user.getHabitats())) {
                 if(compareHabitatProperty(uparu, user.getHabitats())) {
@@ -82,7 +82,8 @@ public class Shop extends Updater{
             result += "Oh, sorry. You cannot purchase this uparu.";
             result += "<br>Because you have only " + user.getInventory().money + ".";
         }
-        System.out.println(result);
+        result += "</p></html>"; 
+        return result;  
     }
     private boolean checkMoneyPrice(int price, Inventory inventory) {
         boolean result = false;
@@ -128,8 +129,8 @@ public class Shop extends Updater{
         result = shopHabitats.find(selection);
         return result;
     }
-    public void purchaseHabitat(Habitat habitat, User user) {
-        String result = "";
+    public String purchaseHabitat(Habitat habitat, User user) {
+        String result = "<html><p style='text-align:center'>";
         if (checkMoneyPrice(habitat.getPrice(), user.getInventory())) {
             if (checkHabitatProperty(habitat, user.getHabitats())) {
                 user.getInventory().consumeMoney(habitat.getPrice());
@@ -144,7 +145,8 @@ public class Shop extends Updater{
             result += "Oh, sorry. You cannot purchase this habitat.";
             result += "<br>Because you have only " + user.getInventory().money + ".";
         }
-        System.out.println(result);
+        result += "</p></html>";
+        return result;
     }
     private boolean checkHabitatProperty(Habitat selectHabitat, Habitats habitats) {
         boolean result;
@@ -161,8 +163,8 @@ public class Shop extends Updater{
         result = shopFarms.find(selection);
         return result;
     }
-    public void purchaseFarm(Farm farm, User user) {
-        String result = "";
+    public String purchaseFarm(Farm farm, User user) {
+        String result = "<html><p style='text-align:center'>";
         if (checkMoneyPrice(farm.getPrice(), user.getInventory())) {
             user.getInventory().consumeMoney(farm.getPrice());
             user.getFarms().add(farm);
@@ -173,6 +175,7 @@ public class Shop extends Updater{
             result += "Oh, sorry. You cannot purchase this farm.";
             result += "<br>Because you have only " + user.getInventory().money + ".";
         }
-        System.out.println(result);
+        result += "</p></html>";
+        return result;
     }
 }

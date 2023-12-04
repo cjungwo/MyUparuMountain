@@ -50,6 +50,7 @@ public class Uparu extends Record{
     // Setter
     public void setName(String name) {
         this.name = name;
+        updateViews();
     }
 
     public void eatFruit(Inventory inventory) {
@@ -61,6 +62,7 @@ public class Uparu extends Record{
         if (inventory.consumeFruit(fruitsToUse)) {
             eatenFruitNum += fruitsToUse;
             System.out.println(name + " ate " + fruitsToUse + "fruits.");
+            updateViews();
         }
         levelUp();
         System.out.println(name + "'s total eaten fruits are " + eatenFruitNum);
@@ -73,6 +75,7 @@ public class Uparu extends Record{
                 System.out.println("Level up!!");
                 System.out.println("Now this " + name + " is Level" + level);
                 fruitsPerLevels.removeFirst();
+                updateViews();
             } else {
                 stop = true;
             }

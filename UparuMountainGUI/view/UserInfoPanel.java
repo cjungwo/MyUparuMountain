@@ -4,6 +4,7 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
+import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.controller.NavListener;
 import UparuMountainGUI.model.Observer;
@@ -23,10 +24,13 @@ public class UserInfoPanel extends JPanel implements Observer{
         setup();
         build();
         user.attach(this);
+        user.getInventory().attach(this);
+        user.getHabitats().attach(this);
+        user.getFarms().attach(this);
     }
 
     private void setup() {
-        userInfoLabel.setPreferredSize(new Dimension(350, 400));
+        scroller.setPreferredSize(new Dimension(UparuMountainWindow.WIDTH, 400));
         backBtn.addActionListener(new NavListener(cPanel, "main"));
     }
 

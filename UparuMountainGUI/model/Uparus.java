@@ -10,10 +10,12 @@ public class Uparus extends Records{
         uparu.setId(++id);
         records.add(uparu);
         uparu.setId(previousId);
+        updateViews();
     }
     public void add(String name, Property property, int moneyPerSecond, int price) {
         Uparu uparu = new Uparu(++id, name, property, moneyPerSecond, price);
         records.add(uparu);
+        updateViews();
     }
 
     public Uparu find(int id) {

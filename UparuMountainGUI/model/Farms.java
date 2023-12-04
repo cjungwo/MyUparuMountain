@@ -31,10 +31,12 @@ public class Farms extends Records{
         farm.setId(++id);
         records.add(farm);
         farm.setId(previousId);
+        updateViews();
     }
     public void add(String name, int producingTime, int producingAmount, int price) {
         Farm farm = new Farm(++id, name, producingTime,producingAmount, price);
         records.add(farm);
+        updateViews();
     }
 
     public Farm find(int id) {
