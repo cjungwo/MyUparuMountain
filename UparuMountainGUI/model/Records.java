@@ -10,6 +10,10 @@ public class Records extends Updater{
         return records;
     }
 
+    public int getSize() {
+        return  records.size();
+    }
+
     protected void add(Record record) {
         records.add(record);
     }

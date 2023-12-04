@@ -9,6 +9,7 @@ import javax.swing.*;
 import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.controller.NavListener;
+import UparuMountainGUI.controller.NumberInputListener;
 import UparuMountainGUI.controller.ShopNavListener;
 import UparuMountainGUI.model.Shop;
 import UparuMountainGUI.model.User;
@@ -106,17 +107,7 @@ public class ShopPanel extends JPanel{
             habitatList.setText(shop.getShopHabitats().toString());
             scroller.setPreferredSize(new Dimension(UparuMountainWindow.WIDTH, 400));
 
-            field.addKeyListener(new KeyAdapter() {
-                public void keyPressed(KeyEvent ke) {
-                    if (ke.getKeyChar() >= '1' && ke.getKeyChar() <= '6') {
-                        field.setEditable(true);
-                        warningMsg.setText("");
-                    } else {
-                        field.setEditable(false);
-                        warningMsg.setText("* Enter only numeric digits(1-6)");
-                    }
-                }
-            });
+            field.addKeyListener(new NumberInputListener(shop.getShopHabitats().getSize(), field, warningMsg));
             purchaseBtn.addActionListener(new Listener());
             backBtn.addActionListener(new ShopNavListener(shopPanel, "lobby"));
         }
@@ -163,17 +154,7 @@ public class ShopPanel extends JPanel{
         private void setup() {
             uparuList.setText(shop.getShopUparus().toString());
             scroller.setPreferredSize(new Dimension(UparuMountainWindow.WIDTH, 400));
-            field.addKeyListener(new KeyAdapter() {
-                public void keyPressed(KeyEvent ke) {
-                    if (ke.getKeyChar() >= '1' && ke.getKeyChar() <= '6') {
-                        field.setEditable(true);
-                        warningMsg.setText("");
-                    } else {
-                        field.setEditable(false);
-                        warningMsg.setText("* Enter only numeric digits(1-6)");
-                    }
-                }
-            });
+            field.addKeyListener(new NumberInputListener(shop.getShopUparus().getSize(), field, warningMsg));
             purchaseBtn.addActionListener(new Listener());
             backBtn.addActionListener(new ShopNavListener(shopPanel, "lobby"));
         }
@@ -220,17 +201,7 @@ public class ShopPanel extends JPanel{
         private void setup() {
             farmList.setText(shop.getShopFarms().toString());
             scroller.setPreferredSize(new Dimension(UparuMountainWindow.WIDTH, 400));
-            field.addKeyListener(new KeyAdapter() {
-                public void keyPressed(KeyEvent ke) {
-                    if (ke.getKeyChar() >= '1' && ke.getKeyChar() <= '6') {
-                        field.setEditable(true);
-                        warningMsg.setText("");
-                    } else {
-                        field.setEditable(false);
-                        warningMsg.setText("* Enter only numeric digits(1-6)");
-                    }
-                }
-            });
+            field.addKeyListener(new NumberInputListener(shop.getShopFarms().getSize(), field, warningMsg));
             purchaseBtn.addActionListener(new Listener());
             backBtn.addActionListener(new ShopNavListener(shopPanel, "lobby"));
         }

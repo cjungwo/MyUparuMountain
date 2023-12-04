@@ -6,10 +6,6 @@ public class Habitats extends Records{
     
     public Habitats() {}
 
-    public int getSize() {
-        return records.size();
-    }
-
     public void menu(User user) {
         if (records.size() != 0) {
             int action = readAction();
