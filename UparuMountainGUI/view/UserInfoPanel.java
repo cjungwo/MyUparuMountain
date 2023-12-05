@@ -7,7 +7,9 @@ import javax.swing.*;
 import UparuMountainGUI.UparuMountainWindow;
 import UparuMountainGUI.UparuMountainWindow.CreatePanel;
 import UparuMountainGUI.controller.NavListener;
+import UparuMountainGUI.model.Habitat;
 import UparuMountainGUI.model.Observer;
+import UparuMountainGUI.model.Record;
 import UparuMountainGUI.model.User;
 
 public class UserInfoPanel extends JPanel implements Observer{
@@ -41,6 +43,12 @@ public class UserInfoPanel extends JPanel implements Observer{
 
     @Override
     public void update() {
+        if (user.getHabitats().getSize() != 0) {
+            for (Record record : user.getHabitats().getRecords()) {
+                ((Habitat) record).detach(this);
+                ((Habitat) record).attach(this);
+            }
+        }
         userInfoLabel.setText(user.toString());
     }
 }

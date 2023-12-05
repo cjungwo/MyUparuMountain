@@ -16,6 +16,7 @@ public class Records extends Updater{
 
     protected void add(Record record) {
         records.add(record);
+        updateViews();
     }
 
     protected Record find(int id) {
