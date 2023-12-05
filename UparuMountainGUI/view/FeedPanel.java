@@ -65,6 +65,9 @@ public class FeedPanel extends JPanel implements Observer {
 
     @Override
     public void update() {
+        if (uparu != null) {
+            listLabel.setText("<html><p style='text-align:center'>" + uparu.toString() + "</p></html>");
+        }
         msgLabel.setText("<html><p style='text-align:center'>How many fruits do you want to feed? <br>You have " + inventory.getFruit() + " fruits.</p></html>");
     }
 

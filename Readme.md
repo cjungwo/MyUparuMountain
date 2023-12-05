@@ -60,4 +60,7 @@ This is an error that occurred in the process of removing values according to co
 [O] Add purchase label in ShopPanel
 [O] Create NumberInputListener to control input number for various list
 [O] Connecting HabitatPanel, FarmPanel and InventoryPanel
-[O] Connecting harvest function of HabitatPanel
+[O] Connecting show uparu function of HabitatPanel
+
+2023/12/05
+[] Connecting harvest function of HabitatPanel

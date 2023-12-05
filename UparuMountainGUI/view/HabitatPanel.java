@@ -36,7 +36,7 @@ public class HabitatPanel extends JPanel{
         lobbyPanel = new LobbyPanel(this);
         feedPanel = new FeedPanel(this);
         uparuPanel = new UparuPanel(this, feedPanel);
-        harvestPanel = new HarvestPanel(this);
+        harvestPanel = new HarvestPanel(this, harvestPanel);
     }
     
     public void build() {

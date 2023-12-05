@@ -49,6 +49,13 @@ public class Habitat extends Record{
         return result;
     }
 
+    public int calculateProducedMoney() {
+        int result = totalMoneyOutput();
+        if (result > moneyCapacity) {
+            result = moneyCapacity;
+        }
+        return result;
+    } 
     private int totalMoneyOutput() {
         int totalMoneyPerSecond = 0;
         for(Record uparu : uparusInHabitat.getRecords()) {
@@ -57,6 +64,7 @@ public class Habitat extends Record{
         return totalMoneyPerSecond;
     }
 
+
     public int harvestMoney(Inventory inventory) {
         int producedMoney = calculateProducedMoney();
         showMoneyOutput(producedMoney, inventory);
@@ -64,15 +72,7 @@ public class Habitat extends Record{
         
         return producedMoney;
     }
-
-    private int calculateProducedMoney() {
-        int result = totalMoneyOutput();
-        if (result > moneyCapacity) {
-            result = moneyCapacity;
-        }
-        return result;
-    } 
-    public void showMoneyOutput(int producedMoney, Inventory inventory) {
+    private void showMoneyOutput(int producedMoney, Inventory inventory) {
         try {
             TimeUnit.SECONDS.sleep(5);
             inventory.saveMoney(producedMoney);

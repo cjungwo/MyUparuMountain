@@ -42,12 +42,7 @@ public class User extends Updater{
     public Inventory getInventory() {
         return inventory;
     }
-
-    public void harvestMoney(Habitat habitat) {
-        habitat.harvestMoney(inventory);
-        updateViews();
-    }
-
+    
     public void harvestFruit() {
         Farm selectFarm = farms.selectFarm();
         if (selectFarm != null) {
