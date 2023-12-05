@@ -43,7 +43,7 @@ This is an error that occurred in the process of removing values according to co
 
 ## Chellenge
 [] How uparu list in habitat updates?
-[] if list size 0, buttons cannot visible.
+[O] if list size 0, buttons cannot visible.
 
 2023/11/29
 [O] Update readme
@@ -63,4 +63,5 @@ This is an error that occurred in the process of removing values according to co
 [O] Connecting show uparu function of HabitatPanel
 
 2023/12/05
-[] Connecting harvest function of HabitatPanel
+[O] Connecting harvest function of HabitatPanel
+[O] Connecting harvest function of FarmPanel

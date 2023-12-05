@@ -1,7 +1,5 @@
 package UparuMountainGUI.model;
 
-import UparuMountainGUI.In;
-
 public class User extends Updater{
     private int id;
     private String name;
@@ -41,14 +39,6 @@ public class User extends Updater{
 
     public Inventory getInventory() {
         return inventory;
-    }
-    
-    public void harvestFruit() {
-        Farm selectFarm = farms.selectFarm();
-        if (selectFarm != null) {
-            selectFarm.harvestFruit(inventory);
-            updateViews();
-        }
     }
 
     @Override

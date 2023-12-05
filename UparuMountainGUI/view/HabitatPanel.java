@@ -61,7 +61,7 @@ public class HabitatPanel extends JPanel{
 
         private JLabel msgLabel = new JLabel("", JLabel.CENTER);
         private JLabel warningMsg = new JLabel("", JLabel.CENTER);
-        private JTextField selelctField = new JTextField(20);
+        private JTextField selectField = new JTextField(20);
         private JButton selectBtn = new JButton("Select");
 
         private JButton showUparuBtn = new JButton("Show Uparu");
@@ -93,7 +93,7 @@ public class HabitatPanel extends JPanel{
 
             msgLabel.setVisible(false);
             warningMsg.setVisible(false);
-            selelctField.setVisible(false);
+            selectField.setVisible(false);
             selectBtn.setVisible(false);
         }
 
@@ -101,7 +101,7 @@ public class HabitatPanel extends JPanel{
             add(scroller);
             add(msgLabel);
             add(warningMsg);
-            add(selelctField);
+            add(selectField);
             add(selectBtn);
             add(showUparuBtn);
             add(harvestBtn);
@@ -114,7 +114,7 @@ public class HabitatPanel extends JPanel{
                 showUparuBtn.setVisible(true);
                 harvestBtn.setVisible(true);
                 listLabel.setText(user.getHabitats().toString());
-                selelctField.addKeyListener(new NumberInputListener(user.getHabitats().getSize(), selelctField, warningMsg));
+                selectField.addKeyListener(new NumberInputListener(user.getHabitats().getSize(), selectField, warningMsg));
             }
         }
 
@@ -131,7 +131,7 @@ public class HabitatPanel extends JPanel{
                 msgLabel.setText("Select Habitat " + msg);
                 msgLabel.setVisible(true);
                 warningMsg.setVisible(true);
-                selelctField.setVisible(true);
+                selectField.setVisible(true);
                 if (actionListener == uparuListener) {
                     if (selectBtn.getAction() != null) {
                         selectBtn.removeActionListener(harvestListener);
@@ -152,10 +152,10 @@ public class HabitatPanel extends JPanel{
         private class UparuListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Habitat habitat = (Habitat) user.getHabitats().find(Integer.parseInt(selelctField.getText()));
+                Habitat habitat = (Habitat) user.getHabitats().find(Integer.parseInt(selectField.getText()));
 
                 uparuPanel.setHabitat(habitat);
-                selelctField.setText("");
+                selectField.setText("");
                 card.show(habitatPanel, "uparu");
             }
         }
@@ -163,10 +163,10 @@ public class HabitatPanel extends JPanel{
         private class HarvestListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Habitat habitat = (Habitat) user.getHabitats().find(Integer.parseInt(selelctField.getText()));
+                Habitat habitat = (Habitat) user.getHabitats().find(Integer.parseInt(selectField.getText()));
 
                 harvestPanel.setHabitat(habitat);
-                selelctField.setText("");
+                selectField.setText("");
                 card.show(habitatPanel, "harvest");
             }
         }

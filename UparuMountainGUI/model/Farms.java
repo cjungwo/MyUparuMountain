@@ -1,7 +1,5 @@
 package UparuMountainGUI.model;
 
-import UparuMountainGUI.In;
-
 public class Farms extends Records{
     public Farms() {}
 
@@ -13,19 +11,6 @@ public class Farms extends Records{
 
     public Farm find(int id) {
         return (Farm) super.find(id);
-    }
-
-    public Farm selectFarm() {
-        Farm result = null;
-        int selection = In.readInt("Select farm to harvest?");
-        result = find(selection);
-        if (result != null) {
-            System.out.println("Your choice is " + result.getName() + " farm.");
-            System.out.println("It takes " + result.getProducingTime() + "seconds");
-        } else {
-            System.out.println("You chose wrong number.");
-        }
-        return result;
     }
 
     public void show() {

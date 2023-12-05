@@ -23,7 +23,7 @@ public class UparuPanel extends JPanel implements Observer {
 
     private JLabel msgLabel = new JLabel("", JLabel.CENTER);
     private JLabel warningMsg = new JLabel("", JLabel.CENTER);
-    private JTextField selelctField = new JTextField(20);
+    private JTextField selectField = new JTextField(20);
     private JButton selectBtn = new JButton("Select");
 
     private JButton feedBtn = new JButton("Feed Uparu");       
@@ -56,7 +56,7 @@ public class UparuPanel extends JPanel implements Observer {
         feedBtn.setVisible(false);
         msgLabel.setVisible(false);
         warningMsg.setVisible(false);
-        selelctField.setVisible(false);
+        selectField.setVisible(false);
         selectBtn.setVisible(false);
     }
 
@@ -66,7 +66,7 @@ public class UparuPanel extends JPanel implements Observer {
 
         add(msgLabel);
         add(warningMsg);
-        add(selelctField);
+        add(selectField);
         add(selectBtn);
         add(feedBtn);
         add(backBtn);
@@ -78,7 +78,7 @@ public class UparuPanel extends JPanel implements Observer {
         if(uparus.getSize() != 0) {
             feedBtn.setVisible(true);
             listLabel.setText(uparus.toString());
-            selelctField.addKeyListener(new NumberInputListener(uparus.getSize(), selelctField, warningMsg));
+            selectField.addKeyListener(new NumberInputListener(uparus.getSize(), selectField, warningMsg));
         }
     }
 
@@ -88,7 +88,7 @@ public class UparuPanel extends JPanel implements Observer {
             msgLabel.setText("Select Uparu to feed fruits");
             msgLabel.setVisible(true);
             warningMsg.setVisible(true);
-            selelctField.setVisible(true);
+            selectField.setVisible(true);
             selectBtn.setVisible(true);
         }
     }
@@ -97,7 +97,7 @@ public class UparuPanel extends JPanel implements Observer {
         @Override
         public void actionPerformed(ActionEvent e) {
             
-            feedPanel.setUparu(uparus.find(Integer.parseInt(selelctField.getText())));
+            feedPanel.setUparu(uparus.find(Integer.parseInt(selectField.getText())));
             hPanel.getCard().show(hPanel, "feed");
         }
     }

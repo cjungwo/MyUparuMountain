@@ -31,7 +31,6 @@ public class Farm extends Record{
     public void harvestFruit(Inventory inventory) {
         try {
             TimeUnit.SECONDS.sleep(producingTime);
-            System.out.println("Succeed producing Fruit.");
             inventory.saveFruit(producingAmount);
             updateViews();
         } catch (InterruptedException e) {
